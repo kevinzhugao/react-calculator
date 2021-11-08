@@ -1,0 +1,28 @@
+{
+  "name": "react-calculator",
+  "version": "1.0.0",
+  "description": "PEMDAS calculator made using React",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinzhugao/react-calculator.git"
+  },
+  "author": "Kevin Gao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinzhugao/react-calculator/issues"
+  },
+  "homepage": "https://github.com/kevinzhugao/react-calculator#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
