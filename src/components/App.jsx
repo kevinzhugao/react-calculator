@@ -7,14 +7,20 @@ import Operations from './Operations.jsx';
 const App = () => {
   let [value, setValue] = useState('');
 
-  const changeValue = (input) => setValue(value + input);
+  const pemdasHandler = (input) => setValue(value + input);
+
+  const deleteHandler = () => setValue(value.substring(0, value.length - 1));
+
+  const equalsHandler = () => {
+
+  }
 
   return (
     <>
       <Display value={value} />
-      <TopRow />
-      <Operations />
-      <Numbers changeValue={changeValue}/>
+      <TopRow pemdasHandler={pemdasHandler} deleteHandler={deleteHandler}/>
+      <Operations pemdasHandler={pemdasHandler}/>
+      <Numbers pemdasHandler={pemdasHandler}/>
     </>
   );
 };
