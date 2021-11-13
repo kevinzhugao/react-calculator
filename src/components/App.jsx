@@ -36,9 +36,13 @@ const App = () => {
   return (
     <>
       <Display display={display} />
-      <TopRow clearHandler={clearHandler} createExpression={createExpression} delHandler={delHandler} />
-      <Operations createExpression={createExpression} equalsHandler={equalsHandler} />
-      <Numbers createExpression={createExpression} />
+        <button className="clear" onClick={clearHandler}>CA</button>
+        <TopRow createExpression={createExpression} delHandler={delHandler} />
+        <div>
+          <Numbers createExpression={createExpression} />
+          <Operations createExpression={createExpression} />
+          <button className="equal" onClick={equalsHandler}>=</button>
+        </div>
     </>
   );
 };

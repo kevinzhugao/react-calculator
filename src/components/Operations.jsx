@@ -1,13 +1,12 @@
 import React from 'react';
 
-const Operations = ({ createExpression, equalsHandler }) => {
+const Operations = ({ createExpression }) => {
   return (
-    <div>
-      <button onClick={() => createExpression('*')}>x</button>
-      <button onClick={() => createExpression('/')}>/</button>
-      <button onClick={() => createExpression('+')}>+</button>
-      <button onClick={() => createExpression('-')}>-</button>
-      <button onClick={equalsHandler}>=</button>
+    <div className="operations">
+      <button className="square-btns" onClick={() => createExpression('*')}>x</button>
+      <button className="square-btns" onClick={() => createExpression('/')}>/</button>
+      <button className="square-btns" onClick={() => createExpression('+')}>+</button>
+      <button className="square-btns" onClick={() => createExpression('-')}>-</button>
     </div>
   );
 };

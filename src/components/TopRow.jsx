@@ -1,14 +1,13 @@
 import React from 'react';
 
-const TopRow = ({ clearHandler, createExpression, delHandler }) => {
+const TopRow = ({ createExpression, delHandler }) => {
   return (
-    <>
-      <button onClick={() => createExpression('(')}>(</button>
-      <button onClick={() => createExpression(')')}>)</button>
-      <button onClick={() => createExpression('^')}>^</button>
-      <button onClick={clearHandler}>CLEAR</button>
-      <button onClick={delHandler}>DEL</button>
-    </>
+    <div>
+      <button className="square-btns" onClick={() => createExpression('(')}>(</button>
+      <button className="square-btns" onClick={() => createExpression(')')}>)</button>
+      <button className="square-btns" onClick={() => createExpression('^')}>^</button>
+      <button className="square-btns" onClick={delHandler}>DEL</button>
+    </div>
   );
 };
 
