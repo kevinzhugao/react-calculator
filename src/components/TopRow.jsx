@@ -6,6 +6,7 @@ const TopRow = ({ createExpression, delHandler }) => {
       <button className="square-btns" onClick={() => createExpression('(')}>(</button>
       <button className="square-btns" onClick={() => createExpression(')')}>)</button>
       <button className="square-btns" onClick={() => createExpression('^')}>^</button>
+      <button className="square-btns" onClick={() => {}}>HIST</button>
       <button className="square-btns" onClick={delHandler}>DEL</button>
     </div>
   );

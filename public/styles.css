@@ -32,6 +32,7 @@ body {
 }
 
 .clear {
+  cursor: pointer;
   color: white;
   background: black;
   border: none;
@@ -48,19 +49,22 @@ body {
   float: left;
 }
 
-.equal {
-  border-top: 1px solid rgba(192, 192, 192, 0.3);
+.abs-equals-container {
   float: left;
-  height: 30rem;
+}
+
+.equals {
+  cursor: pointer;
+  height: 18rem;
   width: 6rem;
   color: white;
   background-color: black;
   border: none;
-  transform: translateY(-6rem);
+  /* transform: translateY(6rem); */
 }
 
 .square-btns {
-  border-top: 1px solid rgba(192, 192, 192, 0.3);
+  cursor: pointer;
   color: white;
   background: black;
   border: none;
@@ -69,7 +73,7 @@ body {
 }
 
 .rtangle-btns {
-  border-top: 1px solid rgba(192, 192, 192, 0.3);
+  cursor: pointer;
   color: white;
   background: black;
   border: none;

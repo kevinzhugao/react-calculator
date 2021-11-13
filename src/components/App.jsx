@@ -31,6 +31,8 @@ const App = () => {
 
   const delHandler = () => setDisplay(display.slice(0, display.length - 1));
 
+  const absHandler = () => setDisplay(Math.abs(calculate(display)));
+
   const equalsHandler = () => setDisplay(calculate(display));
 
   return (
@@ -41,7 +43,10 @@ const App = () => {
         <div>
           <Numbers createExpression={createExpression} />
           <Operations createExpression={createExpression} />
-          <button className="equal" onClick={equalsHandler}>=</button>
+          <div className="abs-equals-container">
+            <button className="square-btns abs" onClick={absHandler}>ABS</button><br></br>
+            <button className="equals" onClick={equalsHandler}>=</button>
+          </div>
         </div>
     </>
   );
