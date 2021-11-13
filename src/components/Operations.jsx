@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Operations = ({ equalsHandler, createExpression }) => {
+const Operations = ({ createExpression, equalsHandler }) => {
   return (
     <div>
       <button onClick={() => createExpression('*')}>x</button>

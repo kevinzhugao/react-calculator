@@ -29,13 +29,15 @@ const App = () => {
 
   const clearHandler = () => setDisplay('');
 
+  const delHandler = () => setDisplay(display.slice(0, display.length - 1));
+
   const equalsHandler = () => setDisplay(calculate(display));
 
   return (
     <>
       <Display display={display} />
-      <TopRow clearHandler={clearHandler} createExpression={createExpression} />
-      <Operations equalsHandler={equalsHandler} createExpression={createExpression} />
+      <TopRow clearHandler={clearHandler} createExpression={createExpression} delHandler={delHandler} />
+      <Operations createExpression={createExpression} equalsHandler={equalsHandler} />
       <Numbers createExpression={createExpression} />
     </>
   );
