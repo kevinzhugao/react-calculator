@@ -3,24 +3,40 @@ import Display from './Display.jsx';
 import TopRow from './TopRow.jsx';
 import Numbers from './Numbers.jsx';
 import Operations from './Operations.jsx';
+import calculate from '../calculate.js';
 
 const App = () => {
-  let [value, setValue] = useState('');
+  let [display, setDisplay] = useState('');
 
-  const pemdasHandler = (input) => setValue(value + input);
+  const createExpression = (input) => {
+    if (input === '-') {
+      if (display === '') {
+        setDisplay(display + input);
+      } else if (Number.isNaN(Number(display[display.length - 1])) && !Number.isNaN(Number(display[display.length - 2]))) {
+        setDisplay(display + input);
+      }
+    } else if (input === '(') {
+      setDisplay(display + input);
+    } else if (typeof input === 'string') {
+      if (display[display.length - 1] === ')') {
+        setDisplay(display + input);
+      } else if (display === '' || Number.isNaN(Number(display[display.length - 1]))) {
+        return;
+      }
+    }
+    setDisplay(display + input);
+  };
 
-  const deleteHandler = () => setValue(value.substring(0, value.length - 1));
+  const clearHandler = () => setDisplay('');
 
-  const equalsHandler = () => {
-
-  }
+  const equalsHandler = () => setDisplay(calculate(display));
 
   return (
     <>
-      <Display value={value} />
-      <TopRow pemdasHandler={pemdasHandler} deleteHandler={deleteHandler}/>
-      <Operations pemdasHandler={pemdasHandler}/>
-      <Numbers pemdasHandler={pemdasHandler}/>
+      <Display display={display} />
+      <TopRow clearHandler={clearHandler} createExpression={createExpression} />
+      <Operations equalsHandler={equalsHandler} createExpression={createExpression} />
+      <Numbers createExpression={createExpression} />
     </>
   );
 };

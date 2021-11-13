@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Operations = ({ pemdasHandler }) => {
+const Operations = ({ equalsHandler, createExpression }) => {
   return (
     <div>
-      <button onClick={() => pemdasHandler('x')}>x</button>
-      <button onClick={() => pemdasHandler('/')}>/</button>
-      <button onClick={() => pemdasHandler('+')}>+</button>
-      <button onClick={() => pemdasHandler('-')}>-</button>
-      <button>=</button>
+      <button onClick={() => createExpression('*')}>x</button>
+      <button onClick={() => createExpression('/')}>/</button>
+      <button onClick={() => createExpression('+')}>+</button>
+      <button onClick={() => createExpression('-')}>-</button>
+      <button onClick={equalsHandler}>=</button>
     </div>
   );
 };

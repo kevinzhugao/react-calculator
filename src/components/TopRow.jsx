@@ -1,12 +1,12 @@
 import React from 'react';
 
-const TopRow = ({ pemdasHandler, deleteHandler }) => {
+const TopRow = ({ clearHandler, createExpression }) => {
   return (
     <>
-      <button onClick={() => pemdasHandler('(')}>(</button>
-      <button onClick={() => pemdasHandler(')')}>)</button>
-      <button onClick={() => pemdasHandler('^')}>^</button>
-      <button onClick={deleteHandler}>DEL</button>
+      <button onClick={() => createExpression('(')}>(</button>
+      <button onClick={() => createExpression(')')}>)</button>
+      <button onClick={() => createExpression('^')}>^</button>
+      <button onClick={clearHandler}>CLEAR</button>
     </>
   );
 };
