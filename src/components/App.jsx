@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import Display from './Display.jsx';
 import TopRow from './TopRow.jsx';
 import Numbers from './Numbers.jsx';
@@ -6,9 +7,18 @@ import Operations from './Operations.jsx';
 import HistoryModal from './HistoryModal.jsx';
 import calculate from '../calculate.js';
 
+const URL = 'http://ec2-54-67-88-11.us-west-1.compute.amazonaws.com/history';
+
 const App = () => {
   let [display, setDisplay] = useState('');
   let [showHistory, setShowHistory] = useState(false);
+  let history = useRef([]);
+
+  useEffect(() => {
+    axios.get(URL)
+    .then(({ data }) => history.current = data.reverse())
+    .catch((error) => console.log(error))
+  }, []);
 
   const createExpression = (input) => {
     if (input === '-') {
@@ -33,9 +43,35 @@ const App = () => {
 
   const delHandler = () => setDisplay(display.slice(0, display.length - 1));
 
-  const absHandler = () => setDisplay(Math.abs(calculate(display)));
+  const absHandler = () => {
+    const result = Math.abs(calculate(display));
+    setDisplay(result);
+    axios.post(URL, {
+      input: `|${display}|`,
+      output: result
+    })
+    .then(() => {
+      axios.get(URL)
+        .then(({ data }) => history.current = data.reverse())
+        .catch((error) => console.log(error))
+    })
+    .catch((error) => console.log(error))
+  }
 
-  const equalsHandler = () => setDisplay(calculate(display));
+  const equalsHandler = () => {
+    const result = calculate(display);
+    setDisplay(result);
+    axios.post(URL, {
+      input: display,
+      output: result[0]
+    })
+    .then(() => {
+      axios.get(URL)
+        .then(({ data }) => history.current = data.reverse())
+        .catch((error) => console.log(error))
+    })
+    .catch((error) => console.log(error))
+  }
 
   return (
     <>
@@ -50,7 +86,7 @@ const App = () => {
             <button className="equals" onClick={equalsHandler}>=</button>
           </div>
         </div>
-      <HistoryModal setShowHistory={setShowHistory} showHistory={showHistory} />
+      <HistoryModal history={history.current} setShowHistory={setShowHistory} showHistory={showHistory} />
     </>
   );
 };
