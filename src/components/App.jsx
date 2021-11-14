@@ -3,10 +3,12 @@ import Display from './Display.jsx';
 import TopRow from './TopRow.jsx';
 import Numbers from './Numbers.jsx';
 import Operations from './Operations.jsx';
+import HistoryModal from './HistoryModal.jsx';
 import calculate from '../calculate.js';
 
 const App = () => {
   let [display, setDisplay] = useState('');
+  let [showHistory, setShowHistory] = useState(false);
 
   const createExpression = (input) => {
     if (input === '-') {
@@ -39,7 +41,7 @@ const App = () => {
     <>
       <Display display={display} />
         <button className="clear" onClick={clearHandler}>CA</button>
-        <TopRow createExpression={createExpression} delHandler={delHandler} />
+        <TopRow createExpression={createExpression} delHandler={delHandler} setShowHistory={setShowHistory}/>
         <div>
           <Numbers createExpression={createExpression} />
           <Operations createExpression={createExpression} />
@@ -48,6 +50,7 @@ const App = () => {
             <button className="equals" onClick={equalsHandler}>=</button>
           </div>
         </div>
+      <HistoryModal setShowHistory={setShowHistory} showHistory={showHistory} />
     </>
   );
 };
